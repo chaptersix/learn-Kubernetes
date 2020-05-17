@@ -25,3 +25,12 @@ install minikube - single node kub cluster in virutal machine on your computer
   && chmod +x minikube
   sudo install minikube /usr/local/bin/
   minikube start
+
+docker build -t alexstanfield/sa-frontend .
+docker push alexstanfield/sa-frontend
+
+minikube start
+add sa-frontend-pod.yaml
+kubectl create -f resource-manifests/sa-frontend-pod.yaml
+kubectl get pods - pod is now running
+kubectl port-forward sa-frontend 8080:80 - forwards port 8080 on host machine to the port 80 on the pod
