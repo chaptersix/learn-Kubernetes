@@ -34,3 +34,19 @@ add sa-frontend-pod.yaml
 kubectl create -f resource-manifests/sa-frontend-pod.yaml
 kubectl get pods - pod is now running
 kubectl port-forward sa-frontend 8080:80 - forwards port 8080 on host machine to the port 80 on the pod
+
+
+kubectl create -f resource-manifests/sa-frontend-pod2.yaml
+kubectl get pods --show-labels
+kubectl create -f resource-manifests/sa-frontend-pod-lb.yaml
+
+kubectl apply -f resource-manifests/sa-frontend-deployment.yaml - created its  own container. the runner containers where not effected (4 running containers now)
+load balancer doesn't seem to be a part of the deployment
+
+
+changed UI component
+docker build -t alexstanfield/sa-frontend:green .
+docker push alexstanfield/sa-frontend:green
+added new deployment file
+kubectl apply -f resource-manifests/sa-frontend-deployment-green.yaml
+  services stayed up and eventually reflected the change 5 sec

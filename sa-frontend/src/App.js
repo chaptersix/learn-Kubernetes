@@ -6,9 +6,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import Polarity from "./components/Polarity";
 
-const style = {
-    marginLeft: 12,
-};
+// const style = {
+//     marginLeft: 12,
+//     color: 'blue',
+// };
 
 class App extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class App extends Component {
                         <h2>Sentiment Analyser</h2>
                         <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
                                    hintText="Type your sentence."/>
-                        <RaisedButton  label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
+                        <RaisedButton  label="Send" backgroundColor='green'  onClick={this.analyzeSentence.bind(this)}/>
                         {polarityComponent}
                     </Paper>
                 </div>
