@@ -71,3 +71,5 @@ export ZONES=us-east-2a
 ```
 
 [Followed the first to setup Gossip based cluster](https://rancher.com/blog/2020/three-way-to-run-aws)
+
+## AWS is cost prohibative at the momemnt
