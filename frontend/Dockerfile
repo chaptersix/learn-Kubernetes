@@ -1,18 +1,18 @@
 # stage1 as builder
 FROM node:10-alpine as builder
 
+WORKDIR /app
 # copy the package.json to install dependencies
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json /app/
 
 # Install the dependencies and make the folder
-RUN npm install && mkdir /frondend-ui && mv ./node_modules ./frondend-ui
+RUN npm install
 
-WORKDIR /frondend-ui
+COPY . /app
 
-COPY . .
 
 # Build the project and copy the files
-RUN npm run ng build -- --deploy-url=/envapp/ --prod
+RUN npm run ng build -- --configuration="production"
 
 
 FROM nginx:alpine
@@ -25,7 +25,7 @@ COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stahg 1
-COPY --from=builder /frondend-ui/dist /usr/share/nginx/html
+COPY --from=builder /app/dist/frontend /usr/share/nginx/html
 
 EXPOSE 4200 80
 
