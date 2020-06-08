@@ -1,0 +1,1 @@
+pom.xml will through a 403 error if you are trying to use http instead of https
