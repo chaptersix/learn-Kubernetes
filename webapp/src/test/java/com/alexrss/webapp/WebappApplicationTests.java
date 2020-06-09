@@ -1,4 +1,4 @@
-package com.webapp.webapp;
+package com.alexrss.webapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
