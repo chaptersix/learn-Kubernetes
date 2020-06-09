@@ -1,4 +1,4 @@
-package com.example.actuatorservice;
+package com.example.demo.restservice;
 
 import java.util.concurrent.atomic.AtomicLong;
 
